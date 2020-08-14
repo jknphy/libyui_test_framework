@@ -16,7 +16,6 @@ module LibyuiTestFramework
 
     it "creates default partitioning on 2nd disk" do
       @expert_partitioner.continue_despite_warning
-      @expert_partitioner.wait_default_view_loaded
       @expert_partitioner.select_hard_disk('susetest|Hard Disks|vdb')
       @expert_partitioner.add_partition
       @expert_partitioner.abort_changes

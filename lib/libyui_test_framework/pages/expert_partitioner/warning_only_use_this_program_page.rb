@@ -2,16 +2,17 @@ module LibyuiTestFramework
   module Pages
     module ExpertPartitioner
       class WarningOnlyUseThisProgramPage
-        # Constructor
-        def initialize(**opts)
-          @app = opts[:app]
+        attr_reader :app
+        
+        YES_BUTTON = { label: 'Yes' } 
 
-          @yes_button_locator = opts[:yes_button_locator]
+        def initialize(app)
+          @app = app
         end
 
         # Method to press 'Yes' button
         def press_yes
-          @app.button(@yes_button_locator).click
+          app.button(YES_BUTTON).click
         end
       end
     end

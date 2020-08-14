@@ -2,22 +2,19 @@ module LibyuiTestFramework
   module Pages
     module ExpertPartitioner
       class SummaryPage
-        attr_reader(
-          :app,
-          :changes_to_partitioning_richtext_locator,
-          :next_button_locator
-        )
+        attr_reader :app
 
-        def initialize(**opts)
-          @app = opts[:app]
-          @changes_to_partitioning_richtext_locator = opts[:changes_to_partitioning_richtext_locator]
-          @next_button_locator = opts[:next_button_locator]
+        CHANGES_TO_PARTITIONING_RICHTEXT = { id: '"Y2Partitioner::Widgets::SummaryText"' }
+        NEXT_BUTTON = { id: 'next' }
 
-          app.richtext(changes_to_partitioning_richtext_locator).exists?
+        def initialize(app)
+          @app = app
+
+          app.richtext(CHANGES_TO_PARTITIONING_RICHTEXT).exists?
         end
 
         def press_next
-          app.button(next_button_locator).click
+          app.button(NEXT_BUTTON).click
         end
       end
     end

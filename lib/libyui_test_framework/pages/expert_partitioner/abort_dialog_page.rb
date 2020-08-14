@@ -2,15 +2,16 @@ module LibyuiTestFramework
   module Pages
     module ExpertPartitioner
       class AbortDialogPage
+        attr_reader :app
+        
+        YES_BUTTON = { label: 'Yes' }
 
-        def initialize(**opts)
-          @app = opts[:app]
-
-          @yes_button_locator = opts[:yes_button_locator]
+        def initialize(app)
+          @app = app
         end
 
         def press_yes
-          @app.button(@yes_button_locator).click
+          app.button(YES_BUTTON).click
         end
       end
     end

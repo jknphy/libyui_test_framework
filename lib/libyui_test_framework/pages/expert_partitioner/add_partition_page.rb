@@ -2,35 +2,30 @@ module LibyuiTestFramework
   module Pages
     module ExpertPartitioner
       class AddPartitionPage
-        attr_reader(
-          :app,
-          :next_button_locator,
-          :max_size_radiobutton_locator,
-          :role_operating_system_radiobutton_locator,
-          :formating_options_label_locator
-        )
+        attr_reader :app
 
-        def initialize(**opts)
-          @app = opts[:app]
-          @next_button_locator = opts[:next_button_locator]
-          @max_size_radiobutton_locator = opts[:max_size_radiobutton_locator]
-          @role_operating_system_radiobutton_locator = opts[:role_operating_system_radiobutton_locator]
-          @formating_options_label_locator = opts[:formating_options_label_locator]
+        NEXT_BUTTON = { id: 'next' }
+        MAX_SIZE_RADIOBUTTON = { id: 'max_size' }
+        ROLE_OPERATING_SYSTEM= { id: 'system'}
+        FORMATING_OPTIONS_LABEL = { label: 'Formatting Options'}
+
+        def initialize(app)
+          @app = app
         end
 
         def press_next_after_setup_new_partition_size
-          app.radiobutton(max_size_radiobutton_locator).exists?
-          app.button(next_button_locator).click
+          app.radiobutton(MAX_SIZE_RADIOBUTTON).exists?
+          app.button(NEXT_BUTTON).click
         end
 
         def press_next_after_setup_role
-          app.radiobutton(role_operating_system_radiobutton_locator).exists?
-          app.button(next_button_locator).click
+          app.radiobutton(ROLE_OPERATING_SYSTEM).exists?
+          app.button(NEXT_BUTTON).click
         end
 
         def press_next_after_formating_options
-          app.label(formating_options_label_locator).exists?
-          app.button(next_button_locator).click
+          app.label(FORMATING_OPTIONS_LABEL).exists?
+          app.button(NEXT_BUTTON).click
         end
       end
     end

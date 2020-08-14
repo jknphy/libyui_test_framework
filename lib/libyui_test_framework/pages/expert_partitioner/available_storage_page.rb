@@ -2,16 +2,14 @@ module LibyuiTestFramework
   module Pages
     module ExpertPartitioner
       class AvailableStoragePage
-        attr_reader(
-          :app,
-          :available_storage_table_locator
-        )
+        attr_reader :app
+        
+        AVAILABLE_STORAGE_TABLE = { id: '"Y2Partitioner::Widgets::ConfigurableBlkDevicesTable"' }
 
-        def initialize(**opts)
-          @app = opts[:app]
-          @available_storage_table_locator = opts[:available_storage_table_locator]
+        def initialize(app)
+          @app = app
 
-          app.table(available_storage_table_locator).exists?
+          app.table(AVAILABLE_STORAGE_TABLE).exists?
         end
       end
     end
