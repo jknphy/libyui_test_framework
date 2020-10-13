@@ -10,8 +10,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Joaquín Rivera"]
   # spec.email         = ["jeriveramoya@suse.com"]
 
-  spec.summary       = 'Automation Framework using libyui_client.'
-  spec.description   = 'Automation Framework using libyui_client.'
+  spec.summary       = 'Automation Framework using yui_rest_client.'
+  spec.description   = 'Automation Framework using yui_rest_client.'
   spec.license       = "MIT"
   spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
 

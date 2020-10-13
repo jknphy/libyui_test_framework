@@ -9,6 +9,6 @@ module LibyuiTestFramework
   end
 
   # def self.logger
-  #   @logger ||= LibyuiClient::Logger.new
+  #   @logger ||= YuiRestClient::Logger.new
   # end
 end
