@@ -1,13 +1,13 @@
 require 'rspec'
-require 'libyui_client'
+require 'yui_rest_client'
 require 'libyui_test_framework'
 
 module LibyuiTestFramework
   RSpec.describe "Once Expert partitioner is launched" do
     before :all do
-      @app = LibyuiClient::App.new(host: '192.168.200.146' , port: '9999')
+      @app = YuiRestClient::App.new(host: '192.168.200.146' , port: '9999')
       
-      local_process = LibyuiClient::LocalProcess.new
+      local_process = YuiRestClient::LocalProcess.new
       local_process.start_app('YUI_REUSE_PORT=1 YUI_HTTP_PORT=9999 yast2 partitioner --qt')
       local_process.start_app("xterm -e 'YUI_REUSE_PORT=1 YUI_HTTP_PORT=9999 yast2 partitioner --ncurses'")
       

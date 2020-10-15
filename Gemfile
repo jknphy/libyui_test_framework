@@ -6,4 +6,4 @@ gemspec
 gem "rake", "~> 12.0"
 gem "rspec", "~> 3.0"
 
-gem "libyui_client", path: "/home/jrivera/Code/libyui_client"
+gem "yui_rest_client"
