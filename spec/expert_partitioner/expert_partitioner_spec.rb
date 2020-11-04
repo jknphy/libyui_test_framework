@@ -5,19 +5,20 @@ require 'libyui_test_framework'
 module LibyuiTestFramework
   RSpec.describe "Once Expert partitioner is launched" do
     before :all do
-      @app = YuiRestClient::App.new(host: '192.168.200.146' , port: '9999')
-      
-      local_process = YuiRestClient::LocalProcess.new
-      local_process.start_app('YUI_REUSE_PORT=1 YUI_HTTP_PORT=9999 yast2 partitioner --qt')
-      local_process.start_app("xterm -e 'YUI_REUSE_PORT=1 YUI_HTTP_PORT=9999 yast2 partitioner --ncurses'")
-      
+      port = '9999'
+      @app = YuiRestClient::App.new(host: 'localhost' , port: port)
+
+      @local_process = Helpers::LocalModule.new(port: port, name: 'partitioner')
+      @local_process.start_qt
+
       @distri = Distributions::DistributionProvider.provide
       @expert_partitioner = @distri.get_expert_partitioner(@app)
+      @app.connect
     end
 
     after :all do
       # ensure module is closed
-      @local_process.kill_app
+      @local_process.kill
     end
 
     it "creates default partitioning on 2nd disk" do
